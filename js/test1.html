@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="abhi()">test</button>
+    <p class="a_myparagraph">hello</p>
+    <p class="">Once, there was a boy who became bored when he watched over the village sheep grazing on the hillsid</p>
+    
+
+    <script>
+        //Global variable
+        let story = `Once upon a time there was an old mother pig who had three little pigs and not enough food to feed them. So when they were old enough, she sent them out into the world to seek their fortunes.
+      The first little pig was very lazy. He didn't want to work at all and he built his house out of straw. The second little pig worked a little bit harder but he was somewhat lazy too and he built 
+      his house out of sticks. Then, they sang and danced and played together the rest of the day. The third little pig worked hard all day and built his house with bricks. It was a sturdy house 
+      complete with a fine fireplace and chimney. It looked like it could withstand the strongest winds. The next day, a wolf happened to pass by the lane where the three little pigs lived; and he saw
+      the straw house, and he smelled the pig inside. He thought the pig would make a mighty fine meal and his mouth began to water.`
+                // 2.Newest way
+                let pertwolinecharactercount = 100;
+                let initialSequence = 1;
+                let currentcharacterlocation =1;
+                totcloc =1;
+                console.log("total count",story.length);
+        var pertwolinecharacter = Math.floor(story.length/pertwolinecharactercount);
+                //Fat arrow
+       let abhi = () => {
+        //Local variable
+        // 16.77676 ---> 17 ceil
+        // 16.76667 ----> 16 floor
+        console.log('pertwolinecharacter-->',pertwolinecharacter);
+        document.querySelector('.a_myparagraph').innerHTML = story;
+
+        }
+
+        document.addEventListener('keyup',()=>{
+           
+            console.log('initialSequence-->',initialSequence);
+            console.log('currentcharacterlocation',currentcharacterlocation);
+            console.log('pertwolinecharacter',pertwolinecharactercount);
+
+            if(currentcharacterlocation >= pertwolinecharactercount){
+                currentcharacterlocation =0;
+                initialSequence++;
+                console.log('new initial sequence -->',initialSequence);
+
+
+                
+               
+            }
+            else{
+
+            currentcharacterlocation++;
+
+            }
+            //If the
+
+            if(initialSequence === 1){
+        console.log('-->',story.substring(initialSequence-1,(initialSequence*pertwolinecharactercount)+pertwolinecharactercount));
+        let x = story.substring(initialSequence-1,(initialSequence*pertwolinecharactercount)+pertwolinecharactercount);
+       
+
+
+        // let x = abhi
+                // if cl = 1 then, <span style = "color:green">a</span style ="color:red text-decoration:underline">bhi
+                   
+            var p1 = x.substring(0,currentcharacterlocation);
+            var p2 = x.substring(currentcharacterlocation);
+          //  p2 = x.replace("a","<span style ='text-decoration:underline'></span>")
+
+          p2 = "<span style='text-decoration: underline ;font-weight:bolder;'>" + p2.charAt(0) + "</span>" + p2.slice(1)
+
+            console.log('part1-->',p1);
+            console.log('part2-->',p2);
+            
+            //
+
+            let a = `<span style ="color:red">${p1}</span>` +p2;
+
+            document.querySelector('.a_myparagraph').innerHTML = a;
+ 
+
+    }
+    else{
+        console.log('-->',story.substring((initialSequence-1)*pertwolinecharactercount,(initialSequence*pertwolinecharactercount)+pertwolinecharactercount));
+       let x= story.substring((initialSequence-1)*pertwolinecharactercount,(initialSequence*pertwolinecharactercount)+pertwolinecharactercount);
+        
+
+       var p1 = x.substring(0,currentcharacterlocation);
+       var p2 = x.substring(currentcharacterlocation);
+
+
+            console.log('part1-->',p1);
+            console.log('part2-->',p2);
+            
+            //
+
+            let a = `<span style ="color:red">${p1}</span>` +p2;
+
+       document.querySelector('.a_myparagraph').innerHTML = a;
+
+    }
+
+
+            totcloc++
+        });
+
+
+       // string.substring(start, end)
+
+       
+       
+
+
+    </script>
+</body>
+</html>
